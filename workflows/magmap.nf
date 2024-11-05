@@ -78,6 +78,7 @@ workflow MAGMAP {
     //
     // INPUT: if user provides, populate ch_genomeinfo with a table that provides the genomes to filter with sourmash
     //
+    ch_genomeinfo = Channel.empty()
     if ( params.genomeinfo) {
         Channel
             .fromPath( params.genomeinfo )
