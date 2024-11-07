@@ -186,7 +186,7 @@
                     },
                     "utils_nfvalidation_plugin": {
                         "branch": "master",
-                        "git_sha": "e6c055a7bb7551ef18436a8ef410dd0e27393c61",
+                        "git_sha": "f533459a222ac53eb4c6bb7a5f574e4069197cdb",
                         "installed_by": [
                             "subworkflows"
                         ]
