@@ -24,15 +24,12 @@ include { GUNZIP                                 } from '../modules/nf-core/gunz
 include { GUNZIP as GUNZIP_GFFS                  } from '../modules/nf-core/gunzip/main'
 include { PROKKA                                 } from '../modules/nf-core/prokka/main'
 include { CAT_FASTQ            	                 } from '../modules/nf-core/cat/fastq/main'
-include { paramsSummaryMap                       } from 'plugin/nf-validation'
-include { fromSamplesheet                        } from 'plugin/nf-validation'
 include { paramsSummaryMultiqc                   } from '../subworkflows/nf-core/utils_nfcore_pipeline/'
 include { methodsDescriptionText                 } from '../subworkflows/local/utils_nfcore_magmap_pipeline'
 include { softwareVersionsToYAML                 } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { BAM_SORT_STATS_SAMTOOLS                } from '../subworkflows/nf-core/bam_sort_stats_samtools/main'
 include { UTILS_NEXTFLOW_PIPELINE                } from '../subworkflows/nf-core/utils_nextflow_pipeline/main'
 include { UTILS_NFCORE_PIPELINE                  } from '../subworkflows/nf-core/utils_nfcore_pipeline/main'
-include { UTILS_NFVALIDATION_PLUGIN              } from '../subworkflows/nf-core/utils_nfvalidation_plugin/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
