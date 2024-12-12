@@ -385,8 +385,7 @@ workflow MAGMAP {
     //
     // MODULE: Concatenate FastQ files from same sample if required
     //
-    CAT_FASTQ (
-      ch_short_reads_forcat.cat.map { meta, reads -> [meta, reads.flatten()] })  
+    CAT_FASTQ (ch_short_reads_forcat.cat.map { meta, reads -> [meta, reads.flatten()] })
     ch_versions = ch_versions.mix(CAT_FASTQ.out.versions.first())
 
     // Ensure we don't have nests of nests so that structure is in form expected for assembly

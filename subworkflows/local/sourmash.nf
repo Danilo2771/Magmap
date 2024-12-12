@@ -127,11 +127,11 @@ workflow SOURMASH {
                     if (genomeInfos == null || genomeInfos.isEmpty()) {
                         return [] // Discard tuples with null or empty genomeInfos
                     }
-        
+
                     // Extract values from the map
                     def genomeFna = genomeInfos.genome_fna ?: ''
                     def genomeGff = genomeInfos.genome_gff ?: ''
-    
+
                 // Return the formatted result
                 return [[accno: accno, genome_fna: genomeFna, genome_gff: genomeGff]]
             }

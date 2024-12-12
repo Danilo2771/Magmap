@@ -27,7 +27,7 @@ process GENOMEINDEX {
         fn=\$(basename \$f .gff.gz)
         fn=\$(basename \$fn .gff)
         ac=\$(echo \$fn | sed 's/\\(G.._[0-9.]\\+\\)_.*/\\1/')
-        
+
         if [ -f "\$f" ] && [ "\${f##*.}" = "gz" ]; then
             zcat "\$f"
         else
