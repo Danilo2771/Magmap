@@ -47,7 +47,6 @@ workflow MAGMAP {
 
     ch_versions = Channel.empty()
     ch_multiqc_files = Channel.empty()
-
     //
     // INPUT: if user provides, populate ch_genomeinfo with a table that provides the genomes to filter with sourmash
     //
@@ -588,7 +587,7 @@ workflow MAGMAP {
     softwareVersionsToYAML(ch_versions)
         .collectFile(
             storeDir: "${params.outdir}/pipeline_info",
-            name: 'nf_core_'  + 'pipeline_software_' +  'mqc_'  + 'versions.yml',
+            name: 'nf_core_'  +  'magmap_software_'  + 'mqc_'  + 'versions.yml',
             sort: true,
             newLine: true
         ).set { ch_collated_versions }
@@ -634,8 +633,7 @@ workflow MAGMAP {
         []
     )
 
-    emit:
-    multiqc_report = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
+    emit:multiqc_report = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
     versions       = ch_versions                 // channel: [ path(versions.yml) ]
 
 }
