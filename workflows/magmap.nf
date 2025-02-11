@@ -8,6 +8,7 @@ include { COLLECT_FEATURECOUNTS                  } from '../modules/local/collec
 include { COLLECT_STATS                          } from '../modules/local/collect_stats'
 include { FILTER_GENOMES                         } from '../modules/local/filter_genomes'
 include { CHECK_DUPLICATES                       } from '../modules/local/check_duplicates'
+include { RENAME_CONTIGS                         } from '../modules/local/rename_contigs'
 include { validateInputSamplesheet               } from '../subworkflows/local/utils_nfcore_magmap_pipeline'
 include { FASTQC_TRIMGALORE                      } from '../subworkflows/local/fastqc_trimgalore'
 include { CAT_GFFS                               } from '../subworkflows/local/concatenate_gff'
@@ -62,6 +63,28 @@ workflow MAGMAP {
     //
     CHECK_DUPLICATES( ch_genomeinfo.map{ it.genome_fna }.collect() )
     ch_versions = ch_versions.mix(CHECK_DUPLICATES.out.versions)
+
+
+    // Conditionally execute the RENAME_CONTIGS process
+    if ( params.rename_contigs ) {
+        ch_genomeinfo
+            .map { it -> [ it.accno, it.genome_fna ] }
+            .collect()
+            .set { contigs_ch }
+
+        RENAME_CONTIGS(contigs_ch)
+        ch_test = RENAME_CONTIGS.out.renamed_contigs
+        ch_versions = ch_versions.mix(RENAME_CONTIGS.out.versions)
+        ch_test
+            .map {
+                [
+                    accno: it[0],
+                    genome_fna: it[1],
+                    genome_gff: []
+                ]
+            }
+            .set { ch_genomeinfo }
+    }
 
     //
     // INPUT: genome info from ncbi
