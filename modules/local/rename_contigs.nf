@@ -1,5 +1,5 @@
 process RENAME_CONTIGS {
-    tag "${meta}"  // Directly use meta as it's already an ID
+    tag "${meta.id}"
     label 'process_low'
 
     conda "bioconda::seqkit=2.3.1"
