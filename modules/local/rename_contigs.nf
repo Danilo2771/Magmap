@@ -15,7 +15,7 @@ process RENAME_CONTIGS {
     path "versions.yml", emit: versions
 
     script:
-    def prefix = task.ext.prefix ?: "${meta}"  // Use meta directly as the prefix
+    def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
     seqkit replace -p "^" -r "${prefix}_" $contigs > ${prefix}_renamed_contigs.fa
