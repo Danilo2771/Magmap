@@ -73,9 +73,9 @@ workflow MAGMAP {
             .set { contigs_ch }
 
         RENAME_CONTIGS(contigs_ch)
-        ch_test = RENAME_CONTIGS.out.renamed_contigs
+        ch_renamed_contigs = RENAME_CONTIGS.out.renamed_contigs
         ch_versions = ch_versions.mix(RENAME_CONTIGS.out.versions)
-        ch_test
+        ch_renamed_contigs
             .map {
                 [
                     accno: it[0].id,
