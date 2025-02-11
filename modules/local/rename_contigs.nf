@@ -18,8 +18,7 @@ process RENAME_CONTIGS {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    seqkit replace -p "^" -r "${prefix}_" $contigs > ${prefix}_renamed_contigs.fa
-    gzip ${prefix}_renamed_contigs.fa
+    seqkit replace -p "^" -r "${prefix}_" $contigs | gzip -c > ${prefix}_renamed_contigs.fna.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
