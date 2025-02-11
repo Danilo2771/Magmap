@@ -23,7 +23,6 @@ process RENAME_CONTIGS {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         seqkit: \$(seqkit version | sed 's/seqkit v//' | sed 's/ Build.*//')
-        gzip: \$(gzip --version | head -n 1 | sed 's/gzip //')
     END_VERSIONS
     """
 }
