@@ -62,6 +62,10 @@
                     "description": "Activate when you work with single ends reads.",
                     "fa_icon": "fas fa-arrows-alt-h"
                 },
+                "rename_contigs": {
+                "type": "boolean",
+                "description": "Activate when you want rename contigs header name. Useful when you run magmap after nf-core/mag.",
+                },
                 "email": {
                     "type": "string",
                     "description": "Email address for completion summary.",
@@ -387,6 +391,5 @@
         {
             "$ref": "#/$defs/generic_options"
         }
-    ],
-    "properties": {}
+    ]
 }
