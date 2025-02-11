@@ -78,7 +78,7 @@ workflow MAGMAP {
         ch_test
             .map {
                 [
-                    accno: it[0],
+                    accno: it[0].id,
                     genome_fna: it[1],
                     genome_gff: []
                 ]
