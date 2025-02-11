@@ -68,7 +68,7 @@ workflow MAGMAP {
     // Conditionally execute the RENAME_CONTIGS process
     if ( params.rename_contigs ) {
         ch_genomeinfo
-            .map { it -> [ it.accno, it.genome_fna ] }
+            .map { it -> [ [ id: it.accno ], it.genome_fna ] }
             .collect()
             .set { contigs_ch }
 
