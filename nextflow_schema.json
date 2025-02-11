@@ -63,8 +63,8 @@
                     "fa_icon": "fas fa-arrows-alt-h"
                 },
                 "rename_contigs": {
-                "type": "boolean",
-                "description": "Activate when you want rename contigs header name. Useful when you run magmap after nf-core/mag.",
+                    "type": "boolean",
+                    "description": "Activate when you want rename contigs header name. Useful when you run magmap after nf-core/mag."
                 },
                 "email": {
                     "type": "string",
